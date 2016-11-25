@@ -17,7 +17,6 @@ import java.util.stream.Collectors;
  *  Repeatedly calling <see cref="Snap"/> will return atomic snapshots of the market.
  */
 public class Market {
-    private final MarketCache marketCache;
     private final String marketId;
     private Map<RunnerId, MarketRunner> marketRunners = new ConcurrentHashMap<>();
     private MarketDefinition marketDefinition;
@@ -25,8 +24,7 @@ public class Market {
     //An atomic snapshot of the state of the market.
     private MarketSnap snap;
 
-    public Market(MarketCache clientMarketCache, String marketId) {
-        this.marketCache = clientMarketCache;
+    public Market(String marketId) {
         this.marketId = marketId;
     }
 
